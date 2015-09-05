@@ -1,0 +1,2 @@
+# gomasks
+Making Bitmasks easy
