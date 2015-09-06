@@ -14,7 +14,7 @@ func TestAddFlag(t *testing.T) {
 
 	mainFlag.AddFlag(TESTFLAG_THREE)
 
-	if mainFlag&(1<<TESTFLAG_THREE) != 0 {
+	if mainFlag&TESTFLAG_THREE == 0 {
 		t.FailNow()
 	}
 
@@ -26,7 +26,7 @@ func TestRemoveFlag(t *testing.T) {
 
 	mainFlag.RemoveFlag(TESTFLAG_THREE)
 
-	if mainFlag&(1<<TESTFLAG_ONE) != 0 {
+	if mainFlag&TESTFLAG_THREE != 0 {
 		t.FailNow()
 	}
 
@@ -40,4 +40,25 @@ func TestHasFlag(t *testing.T) {
 		t.FailNow()
 	}
 
+}
+
+func TestToggleFlag(t *testing.T) {
+
+	var mainFlag Bitmask = TESTFLAG_ONE
+
+	if mainFlag&TESTFLAG_THREE != 0 {
+		t.FailNow()
+	}
+
+	mainFlag.ToggleFlag(TESTFLAG_THREE)
+
+	if mainFlag&TESTFLAG_THREE == 0 {
+		t.FailNow()
+	}
+
+	mainFlag.ToggleFlag(TESTFLAG_THREE)
+
+	if mainFlag&TESTFLAG_THREE != 0 {
+		t.FailNow()
+	}
 }
